@@ -1,0 +1,67 @@
+# The user running Nginx
+user nginx;
+
+# The number of worker processes to use
+worker_processes auto;
+
+# The error log file
+error_log /var/log/nginx/error.log warn;
+
+# The Process ID file
+pid /var/run/nginx.pid;
+
+events {
+    # The number of connections per worker process
+    worker_connections 1024;
+}
+
+http {
+    # Include MIME types
+    include /etc/nginx/mime.types;
+    # Default MIME type
+    default_type application/octet-stream;
+
+    # Set up logging format
+    log_format main '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+    access_log /var/log/nginx/access.log main;
+
+    # Send file to client
+    sendfile on;
+
+    # TCP options
+    tcp_nopush on;
+    tcp_nodelay on;
+
+    # Keepalive timeout
+    keepalive_timeout 65;
+
+    # Gzip compression
+    gzip on;
+    gzip_disable "msie6";
+
+    # This server block handles all HTTP traffic
+    server {
+        listen 80;
+        server_name localhost;
+
+        # Redirect all requests to the frontend service
+        location / {
+            root /usr/share/nginx/html;
+            try_files $uri $uri/ /index.html;
+        }
+
+        # Proxy requests with /api to the backend service
+        location /api/ {
+            # This uses the service name defined in docker-compose.yml
+            # and is crucial for inter-container communication.
+            proxy_pass http://streamdash-backend:8001/;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+    }
+}

@@ -1,0 +1,358 @@
+[
+  {
+    "Parameter": "Barometer - hPa",
+    "Description": "Atmospheric pressure in hectopascals"
+  },
+  {
+    "Parameter": "Barometer - mb",
+    "Description": "Atmospheric pressure in millibars"
+  },
+  {
+    "Parameter": "timestamp",
+    "Description": "Timestamp of the data recording"
+  },
+  {
+    "Parameter": "Cooling Degree Days",
+    "Description": "Cooling degree days, used to estimate energy needed for cooling"
+  },
+  {
+    "Parameter": "Dew Point - °C",
+    "Description": "Dew point temperature in °C"
+  },
+  {
+    "Parameter": "ET - mm",
+    "Description": "Evapotranspiration in mm"
+  },
+  {
+    "Parameter": "Heat Index - °C",
+    "Description": "Heat index temperature in °C"
+  },
+  {
+    "Parameter": "Heating Degree Days",
+    "Description": "Heating degree days, used to estimate energy needed for heating"
+  },
+  {
+    "Parameter": "High Solar Rad - W/m^2",
+    "Description": "Peak solar radiation in W/m²"
+  },
+  {
+    "Parameter": "High Temp - °C",
+    "Description": "Highest recorded temperature in °C"
+  },
+  {
+    "Parameter": "High UV Index",
+    "Description": "Maximum UV index"
+  },
+  {
+    "Parameter": "High Wind Direction",
+    "Description": "Direction of strongest wind gust"
+  },
+  {
+    "Parameter": "High Wind Speed - m/s",
+    "Description": "Maximum wind speed in m/s"
+  },
+  {
+    "Parameter": "High Wind Speed - mph",
+    "Description": "Maximum wind speed in mph"
+  },
+  {
+    "Parameter": "Hum - %",
+    "Description": "Relative humidity in percent"
+  },
+  {
+    "Parameter": "Low Temp - °C",
+    "Description": "Lowest recorded temperature in °C"
+  },
+  {
+    "Parameter": "Rain - mm",
+    "Description": "Total rainfall in mm"
+  },
+  {
+    "Parameter": "Rain Rate - mm/h",
+    "Description": "Rainfall rate in mm/h"
+  },
+  {
+    "Parameter": "Solar Energy - Ly",
+    "Description": "Solar energy received in langleys"
+  },
+  {
+    "Parameter": "Solar Rad - W/m^2",
+    "Description": "Solar radiation in W/m²"
+  },
+  {
+    "Parameter": "Temp - °C",
+    "Description": "Ambient temperature in °C"
+  },
+  {
+    "Parameter": "THSW Index - °C",
+    "Description": "THSW index (temperature-humidity-sun-wind) in °C"
+  },
+  {
+    "Parameter": "THW Index - °C",
+    "Description": "THW index (temperature-humidity-wind) in °C"
+  },
+  {
+    "Parameter": "UV Dose - MEDs",
+    "Description": "UV dose in MEDs (Minimum Erythemal Doses)"
+  },
+  {
+    "Parameter": "UV Index",
+    "Description": "Current UV index"
+  },
+  {
+    "Parameter": "Wet Bulb - °C",
+    "Description": "Wet bulb temperature in °C"
+  },
+  {
+    "Parameter": "Wind Chill - °C",
+    "Description": "Wind chill temperature in °C"
+  },
+  {
+    "Parameter": "Wind Direction",
+    "Description": "Current wind direction"
+  },
+  {
+    "Parameter": "Wind Run - m",
+    "Description": "Wind run in meters"
+  },
+  {
+    "Parameter": "Wind Run - mi",
+    "Description": "Wind run in miles"
+  },
+  {
+    "Parameter": "Wind Speed - m/s",
+    "Description": "Current wind speed in m/s"
+  },
+  {
+    "Parameter": "Wind Speed - mph",
+    "Description": "Current wind speed in mph"
+  },
+  {
+    "Parameter": "Flow - L",
+    "Description": "Fluid flow volume in liters"
+  },
+  {
+    "Parameter": "Flow - cbm",
+    "Description": "Fluid flow volume in cubic meters"
+  },
+  {
+    "Parameter": "Flow State",
+    "Description": "State of flow (e.g. on/off)"
+  },
+  {
+    "Parameter": "Flow Sum - L",
+    "Description": "Cumulative flow in liters"
+  },
+  {
+    "Parameter": "Flow Sum - cbm",
+    "Description": "Cumulative flow in cubic meters"
+  },
+  {
+    "Parameter": "EC - dS/m",
+    "Description": "Electrical conductivity in dS/m"
+  },
+  {
+    "Parameter": "Fluid Depth - cm",
+    "Description": "Depth of fluid in cm"
+  },
+  {
+    "Parameter": "EC 10 cm - VIC",
+    "Description": "Soil EC at 10 cm depth in VIC units"
+  },
+  {
+    "Parameter": "EC 20 cm - VIC",
+    "Description": "Soil EC at 20 cm depth in VIC units"
+  },
+  {
+    "Parameter": "EC 30 cm - VIC",
+    "Description": "Soil EC at 30 cm depth in VIC units"
+  },
+  {
+    "Parameter": "EC 40 cm - VIC",
+    "Description": "Soil EC at 40 cm depth in VIC units"
+  },
+  {
+    "Parameter": "EC 50 cm - VIC",
+    "Description": "Soil EC at 50 cm depth in VIC units"
+  },
+  {
+    "Parameter": "EC 60 cm - VIC",
+    "Description": "Soil EC at 60 cm depth in VIC units"
+  },
+  {
+    "Parameter": "Soil Moisture 10 cm - %",
+    "Description": "Soil moisture at 10 cm depth in percent"
+  },
+  {
+    "Parameter": "Soil Moisture 20 cm - %",
+    "Description": "Soil moisture at 20 cm depth in percent"
+  },
+  {
+    "Parameter": "Soil Moisture 30 cm - %",
+    "Description": "Soil moisture at 30 cm depth in percent"
+  },
+  {
+    "Parameter": "Soil Moisture 40 cm - %",
+    "Description": "Soil moisture at 40 cm depth in percent"
+  },
+  {
+    "Parameter": "Soil Moisture 50 cm - %",
+    "Description": "Soil moisture at 50 cm depth in percent"
+  },
+  {
+    "Parameter": "Soil Moisture 60 cm - %",
+    "Description": "Soil moisture at 60 cm depth in percent"
+  },
+  {
+    "Parameter": "Soil Temperature 10 cm - °C",
+    "Description": "Soil temperature at 10 cm depth in °C"
+  },
+  {
+    "Parameter": "Soil Temperature 20 cm - °C",
+    "Description": "Soil temperature at 20 cm depth in °C"
+  },
+  {
+    "Parameter": "Soil Temperature 30 cm - °C",
+    "Description": "Soil temperature at 30 cm depth in °C"
+  },
+  {
+    "Parameter": "Soil Temperature 40 cm - °C",
+    "Description": "Soil temperature at 40 cm depth in °C"
+  },
+  {
+    "Parameter": "Soil Temperature 50 cm - °C",
+    "Description": "Soil temperature at 50 cm depth in °C"
+  },
+  {
+    "Parameter": "Soil Temperature 60 cm - °C",
+    "Description": "Soil temperature at 60 cm depth in °C"
+  },
+  {
+    "Parameter": "EC - DSM",
+    "Description": "Electrical conductivity DSM value"
+  },
+  {
+    "Parameter": "High Hum - %",
+    "Description": "Highest recorded humidity in percent"
+  },
+  {
+    "Parameter": "Low Hum - %",
+    "Description": "Lowest recorded humidity in percent"
+  },
+  {
+    "Parameter": "AQI",
+    "Description": "Air Quality Index"
+  },
+  {
+    "Parameter": "High AQI",
+    "Description": "Highest Air Quality Index recorded"
+  },
+  {
+    "Parameter": "High Dew Point - °C",
+    "Description": "Highest dew point temperature in °C"
+  },
+  {
+    "Parameter": "High Heat Index - °C",
+    "Description": "Highest heat index temperature in °C"
+  },
+  {
+    "Parameter": "High PM 1 - ug/m³",
+    "Description": "Highest PM1 level in µg/m³"
+  },
+  {
+    "Parameter": "High PM 10 - ug/m³",
+    "Description": "Highest PM10 level in µg/m³"
+  },
+  {
+    "Parameter": "High PM 2.5 - ug/m³",
+    "Description": "Highest PM2.5 level in µg/m³"
+  },
+  {
+    "Parameter": "High Wet Bulb - °C",
+    "Description": "Highest wet bulb temperature in °C"
+  },
+  {
+    "Parameter": "Inside AQI",
+    "Description": "Indoor air quality index"
+  },
+  {
+    "Parameter": "Inside Heat Index - °C",
+    "Description": "Indoor heat index in °C"
+  },
+  {
+    "Parameter": "Inside High AQI",
+    "Description": "Highest indoor AQI"
+  },
+  {
+    "Parameter": "Inside High Heat Index - °C",
+    "Description": "Highest indoor heat index in °C"
+  },
+  {
+    "Parameter": "Inside High Hum - %",
+    "Description": "Highest indoor humidity in percent"
+  },
+  {
+    "Parameter": "Inside High PM 1 - ug/m³",
+    "Description": "Highest indoor PM1 level in µg/m³"
+  },
+  {
+    "Parameter": "Inside High PM 10 - ug/m³",
+    "Description": "Highest indoor PM10 level in µg/m³"
+  },
+  {
+    "Parameter": "Inside High PM 2.5 - ug/m³",
+    "Description": "Highest indoor PM2.5 level in µg/m³"
+  },
+  {
+    "Parameter": "Inside High Temp - °C",
+    "Description": "Highest indoor temperature in °C"
+  },
+  {
+    "Parameter": "Inside Hum - %",
+    "Description": "Indoor humidity in percent"
+  },
+  {
+    "Parameter": "Inside Low Hum - %",
+    "Description": "Lowest indoor humidity in percent"
+  },
+  {
+    "Parameter": "Inside Low Temp - °C",
+    "Description": "Lowest indoor temperature in °C"
+  },
+  {
+    "Parameter": "Inside PM 1 - ug/m³",
+    "Description": "Indoor PM1 level in µg/m³"
+  },
+  {
+    "Parameter": "Inside PM 10 - ug/m³",
+    "Description": "Indoor PM10 level in µg/m³"
+  },
+  {
+    "Parameter": "Inside PM 2.5 - ug/m³",
+    "Description": "Indoor PM2.5 level in µg/m³"
+  },
+  {
+    "Parameter": "Inside Temp - °C",
+    "Description": "Indoor temperature in °C"
+  },
+  {
+    "Parameter": "Low Dew Point - °C",
+    "Description": "Lowest dew point temperature in °C"
+  },
+  {
+    "Parameter": "Low Wet Bulb - °C",
+    "Description": "Lowest wet bulb temperature in °C"
+  },
+  {
+    "Parameter": "PM 1 - ug/m³",
+    "Description": "Current PM1 level in µg/m³"
+  },
+  {
+    "Parameter": "PM 10 - ug/m³",
+    "Description": "Current PM10 level in µg/m³"
+  },
+  {
+    "Parameter": "PM 2.5 - ug/m³",
+    "Description": "Current PM2.5 level in µg/m³"
+  }
+]

@@ -1,0 +1,105 @@
+/* About.css */
+
+/* Reset / base styles (optional) */
+.aboutPage {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.aboutHero {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.aboutHero h1 {
+  font-size: 2.5rem;
+  color: #005a87;
+  margin-bottom: 0.5rem;
+}
+
+.aboutHero .tagline {
+  font-size: 1.2rem;
+  color: #007bb5;
+  margin-bottom: 1rem;
+}
+
+.aboutMission,
+.aboutStory,
+.aboutWhat,
+.aboutImpact,
+.aboutPartners,
+.aboutVision,
+.aboutCTA,
+.aboutContact {
+  margin-bottom: 2rem;
+}
+
+.aboutMission h2,
+.aboutStory h2,
+.aboutWhat h2,
+.aboutImpact h2,
+.aboutPartners h2,
+.aboutVision h2,
+.aboutCTA h2,
+.aboutContact h2 {
+  font-size: 1.8rem;
+  color: #005a87;
+  margin-bottom: 0.75rem;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 0.5rem;
+}
+
+.aboutMission ul,
+.aboutWhat ul,
+.aboutVision ul,
+.aboutImpact ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+.aboutImpact h3 {
+  font-size: 1.4rem;
+  color: #007bb5;
+  margin-top: 1.2rem;
+}
+
+.aboutCTA ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.aboutCTA li {
+  margin-bottom: 0.5rem;
+}
+
+.aboutCTA strong {
+  color: #005a87;
+}
+
+.aboutContact a {
+  color: #007bb5;
+  text-decoration: none;
+}
+
+.aboutContact a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .aboutPage {
+    padding: 1rem;
+  }
+
+  .aboutHero h1 {
+    font-size: 2rem;
+  }
+
+  .aboutHero .tagline {
+    font-size: 1rem;
+  }
+}

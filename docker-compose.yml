@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.backend
+    ports:
+      - "8001:8001"
+    networks:
+      - streamdash-net
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "3000:3000"
+    networks:
+      - streamdash-net
+
+  nginx:
+    # Use the new custom Dockerfile to build the Nginx image
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    ports:
+      - "80:80"
+    networks:
+      - streamdash-net
+    # The volumes entry is no longer needed since the nginx.conf file is
+    # now included in the Nginx Docker image itself.
+    restart: unless-stopped
+
+networks:
+  streamdash-net:
+    driver: bridge

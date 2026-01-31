@@ -1,0 +1,50 @@
+version: "3.8"
+
+services:
+  # The backend service
+  backend:
+    build:
+      context: ./backend # Use the backend folder as the build context
+      dockerfile: Dockerfile.backend
+    container_name: streamdash-backend
+    restart: unless-stopped
+    expose:
+      - "8001"            # Expose internally to the Docker network
+    environment:
+      - PYTHONUNBUFFERED=1
+    networks:
+      - streamdash-net
+
+  # The frontend service
+  # This container builds the React app and serves it with an internal NGINX instance
+  frontend:
+    build:
+      context: ./frontend # Use the frontend folder as the build context
+      dockerfile: Dockerfile.frontend
+    container_name: streamdash-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    networks:
+      - streamdash-net
+
+  # The NGINX reverse proxy service
+  # This handles all public-facing traffic and routes it to the correct service
+  nginx:
+    image: nginx:1.25.3-alpine # Use an official Nginx image
+    container_name: streamdash-nginx
+    restart: unless-stopped
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro # Mount the custom Nginx config file
+    ports:
+      - "80:80"             # Public HTTP port
+      - "443:443"           # Public HTTPS port
+    depends_on:
+      - frontend            # Depends on frontend to serve static files
+      - backend             # Depends on backend for API traffic
+    networks:
+      - streamdash-net
+
+networks:
+  streamdash-net:
+    driver: bridge

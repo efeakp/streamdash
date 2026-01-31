@@ -1,0 +1,29 @@
+# Use a Python base image. We'll use a version that is compatible with your needs.
+FROM python:3.11-slim
+
+# Install system-level dependencies required for the mariadb Python package.
+# The `default-libmysqlclient-dev` package provides the MariaDB Connector/C library headers,
+# which are necessary for the `mariadb` Python connector to compile.
+# `build-essential` provides key tools like gcc.
+RUN apt-get update && apt-get install -y default-libmysqlclient-dev build-essential
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the requirements.txt file from the build context (which is the backend/ folder)
+# to the current working directory in the container.
+COPY requirements.txt .
+
+# Install the Python dependencies
+# We use --no-cache-dir to keep the image size small
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of the backend source code (including main.py, db.py, etc.)
+# from the build context into the container.
+COPY . .
+
+# Expose the port your application will run on
+EXPOSE 8001
+
+# The command to run the application when the container starts
+CMD ["python", "main.py"]

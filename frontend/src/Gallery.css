@@ -1,0 +1,17 @@
+.gallery {
+  text-align: center;
+  padding: 20px;
+}
+
+.gallery-grid {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.gallery-grid img {
+  width: 200px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
