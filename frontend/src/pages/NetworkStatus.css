@@ -16,18 +16,6 @@
   margin-bottom: 24px;
 }
 
-.ns-pill {
-  padding: 6px 16px;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 600;
-}
-
-.pill-online  { background: #e6f9ec; color: #1a7f3c; border: 1px solid #a8ddb8; }
-.pill-recent  { background: #fff8e1; color: #7a5800; border: 1px solid #ffe08a; }
-.pill-stale   { background: #fff3e0; color: #8c4600; border: 1px solid #ffcc80; }
-.pill-nodata  { background: #e8f0fe; color: #1a4fba; border: 1px solid #b0c8f8; }
-
 /* Table */
 .ns-table-wrap {
   overflow-x: auto;
@@ -95,21 +83,11 @@
   margin-left: 18px;
 }
 
-/* Status badge */
+/* Status badge — colours defined in About.css (shared) */
 .ns-badge {
-  display: inline-block;
   padding: 2px 10px;
-  border-radius: 10px;
-  font-size: 0.78rem;
-  font-weight: 600;
   white-space: nowrap;
 }
-
-.status-online  { background: #e6f9ec; color: #1a7f3c; }
-.status-recent  { background: #fff8e1; color: #7a5800; }
-.status-stale   { background: #fff3e0; color: #8c4600; }
-.status-nodata  { background: #f5f5f5; color: #888; }
-.status-wl      { background: #e8f0fe; color: #1a4fba; }
 
 /* Date cell */
 .ns-date {
@@ -137,14 +115,7 @@
   gap: 4px;
 }
 
-.ns-cat {
-  display: inline-block;
-  padding: 2px 7px;
-  border-radius: 8px;
-  font-size: 0.72rem;
-  color: #fff;
-  white-space: nowrap;
-}
+/* .ns-cat and .ns-dot defined in About.css (shared) */
 
 /* Dashboard link */
 .ns-link {

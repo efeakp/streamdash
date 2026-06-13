@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { UOH_NODES, CATEGORY_COLOUR } from "../data/uohNodes";
+import "../About.css";
 import "./NetworkStatus.css";
 
 const API_URL = process.env.REACT_APP_API_URL;
