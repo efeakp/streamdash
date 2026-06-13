@@ -116,6 +116,17 @@
   margin: 0;
 }
 
+/* Map */
+.about-map {
+  margin-bottom: 36px;
+}
+
+.about-map h2 {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 12px;
+}
+
 /* About body text */
 .about-body {
   line-height: 1.7;

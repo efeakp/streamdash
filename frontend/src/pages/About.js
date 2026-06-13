@@ -87,6 +87,21 @@ const About = () => {
         ))}
       </section>
 
+      {/* Map */}
+      <section className="about-map">
+        <h2>Monitoring Sites</h2>
+        <iframe
+          title="SuDS Monitoring Sites"
+          src="https://www.google.com/maps/d/embed?mid=1NBGFkfCjY_he4-ULN4hYiFnmJij_OVo"
+          width="100%"
+          height="420"
+          style={{ border: 0, borderRadius: "8px" }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        />
+      </section>
+
       {/* About text */}
       <section className="about-body">
         <p>
