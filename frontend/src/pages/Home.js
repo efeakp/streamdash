@@ -3,6 +3,7 @@ import LocationSelector from "../components/LocationSelector";
 import SiteSelector from "../components/SiteSelector";
 import SensorSelector from "../components/SensorSelector";
 import MeasurementChart from "../components/MeasurementChart";
+import LiveWeather from "../components/LiveWeather";
 
 function Home() {
   const [locationId, setLocationId] = useState(null);
@@ -14,6 +15,11 @@ function Home() {
   return (
     <div>
       <h2>Sensor Dashboard</h2>
+
+      <h3 style={{ marginBottom: 4 }}>Live Conditions</h3>
+      <LiveWeather />
+
+      <h3 style={{ marginTop: 28, marginBottom: 8 }}>Sensor Data</h3>
       <LocationSelector
         onSelect={(id) => {
           setLocationId(id);
