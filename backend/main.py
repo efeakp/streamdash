@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional
+import time
 import db
 import requests as http
 
@@ -122,18 +123,31 @@ def get_sensors(site_id: int):
 # ----------------------
 # NETWORK STATUS
 # ----------------------
+_network_cache = {"data": None, "at": 0}
+_CACHE_TTL = 300  # 5 minutes
+
 @app.get("/network-status")
 def get_network_status():
+    now = time.time()
+    if _network_cache["data"] is not None and now - _network_cache["at"] < _CACHE_TTL:
+        return _network_cache["data"]
+
     conn = db.get_connection()
     cursor = conn.cursor()
+    # Pre-aggregate max timestamp per sensor first, then join — avoids scanning
+    # all 15M measurement rows in a single grouped join.
     cursor.execute("""
         SELECT si.site_id, si.site_code, l.location_id, l.name,
                COUNT(DISTINCT s.sensor_id),
-               MAX(m.timestamp)
+               MAX(latest.max_ts)
         FROM sites si
         JOIN locations l ON si.location_id = l.location_id
         LEFT JOIN sensors s ON s.site_id = si.site_id
-        LEFT JOIN measurements m ON m.sensor_id = s.sensor_id AND m.value IS NOT NULL
+        LEFT JOIN (
+            SELECT sensor_id, MAX(timestamp) AS max_ts
+            FROM measurements
+            GROUP BY sensor_id
+        ) latest ON latest.sensor_id = s.sensor_id
         GROUP BY si.site_id, si.site_code, l.location_id, l.name
         ORDER BY l.name, si.site_code
     """)
@@ -150,6 +164,8 @@ def get_network_status():
     ]
     cursor.close()
     conn.close()
+    _network_cache["data"] = results
+    _network_cache["at"] = now
     return results
 
 # ----------------------
