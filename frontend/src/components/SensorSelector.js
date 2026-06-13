@@ -25,7 +25,8 @@ function SensorSelector({ siteId, onSelect }) {
       <select
         onChange={(e) => {
           const val = e.target.value;
-          onSelect(val ? Number(val) : null);
+          const sensor = sensors.find((s) => s.sensor_id === Number(val));
+          onSelect(sensor || null);
         }}
       >
         <option value="">-- Choose --</option>

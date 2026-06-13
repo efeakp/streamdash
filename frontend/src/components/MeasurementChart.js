@@ -11,18 +11,21 @@ import {
 
 const API_URL = process.env.REACT_APP_API_URL;
 
-function MeasurementChart({ sensorId }) {
+function MeasurementChart({ sensorId, sensorName, unit, startDate, endDate }) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (sensorId) {
       setLoading(true);
-      fetch(`${API_URL}/measurements?sensor_id=${sensorId}`)
+      let url = `${API_URL}/measurements?sensor_id=${sensorId}`;
+      if (startDate) url += `&start_date=${startDate}`;
+      if (endDate) url += `&end_date=${endDate}`;
+
+      fetch(url)
         .then((res) => res.json())
         .then((data) => {
-          const arr = Array.isArray(data) ? data.reverse() : [];
-          setData(arr);
+          setData(Array.isArray(data) ? data : []);
         })
         .catch((err) => {
           console.error("Error fetching measurements:", err);
@@ -32,11 +35,11 @@ function MeasurementChart({ sensorId }) {
     } else {
       setData([]);
     }
-  }, [sensorId]);
+  }, [sensorId, startDate, endDate]);
 
   return (
     <div style={{ marginTop: 20 }}>
-      <h3>Measurements</h3>
+      <h3>{sensorName || "Measurements"}{unit ? ` (${unit})` : ""}</h3>
 
       {loading && <p>Loading measurements...</p>}
       {!loading && data.length === 0 && <p>No data available for this sensor.</p>}
@@ -49,11 +52,16 @@ function MeasurementChart({ sensorId }) {
               dataKey="timestamp"
               tickFormatter={(tick) => new Date(tick).toLocaleDateString()}
             />
-            <YAxis />
+            <YAxis
+              label={{
+                value: unit || "",
+                angle: -90,
+                position: "insideLeft",
+                offset: 10,
+              }}
+            />
             <Tooltip
-              labelFormatter={(label) =>
-                new Date(label).toLocaleString()
-              }
+              labelFormatter={(label) => new Date(label).toLocaleString()}
             />
             <Line type="monotone" dataKey="value" stroke="#0077ff" dot={false} />
           </LineChart>
