@@ -96,7 +96,12 @@ const About = () => {
 
       {/* Map */}
       <section className="about-map">
-        <h2>Monitoring Sites</h2>
+        <h2>
+          Monitoring Sites{" "}
+          <Link to="/map" style={{ fontSize: "0.85rem", fontWeight: "normal", marginLeft: 10 }}>
+            View interactive sensor map →
+          </Link>
+        </h2>
         <iframe
           title="SuDS Monitoring Sites"
           src="https://www.google.com/maps/d/embed?mid=1NBGFkfCjY_he4-ULN4hYiFnmJij_OVo"
