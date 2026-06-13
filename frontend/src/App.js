@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-do
 import About from "./pages/About";
 import Gallery from "./pages/Gallery";
 import Home from "./pages/Home";
-import Parameters from "./data/Parameters"; 
+import Map from "./pages/Map";
+import Parameters from "./data/Parameters";
 import logo from "./assets/logo.jpg"; // place your logo in src/assets/
 
 function App() {
@@ -77,6 +78,9 @@ function App() {
             <NavLink to="/parameters" style={navLinkStyle} onClick={() => setMenuOpen(false)}>
               Parameters
             </NavLink>
+            <NavLink to="/map" style={navLinkStyle} onClick={() => setMenuOpen(false)}>
+              Map
+            </NavLink>
             <NavLink to="/gallery" style={navLinkStyle} onClick={() => setMenuOpen(false)}>
               Gallery
             </NavLink>
@@ -89,7 +93,8 @@ function App() {
             <Route path="/" element={<About />} />
             <Route path="/dashboard" element={<Home />} />
             <Route path="/parameters" element={<Parameters />} />
-            <Route path="/gallery" element={<Gallery />} /> {/* 👈 new route */}
+            <Route path="/map" element={<Map />} />
+            <Route path="/gallery" element={<Gallery />} />
           </Routes>
         </main>
 
