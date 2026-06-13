@@ -10,6 +10,8 @@ services:
     restart: unless-stopped
     expose:
       - "8001"            # Expose internally to the Docker network
+    env_file:
+      - ./backend/.env
     environment:
       - PYTHONUNBUFFERED=1
     networks:
