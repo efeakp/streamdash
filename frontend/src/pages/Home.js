@@ -28,9 +28,10 @@ function Home() {
       <LocationSelector
         defaultId={defaultLocationId}
         onSelect={(id) => {
-          setLocationId(id);
-          setSiteId(null);
-          setSensor(null);
+          setLocationId((prev) => {
+            if (prev !== id) { setSiteId(null); setSensor(null); }
+            return id;
+          });
         }}
       />
       {locationId && (
@@ -38,8 +39,10 @@ function Home() {
           locationId={locationId}
           defaultId={defaultSiteId}
           onSelect={(id) => {
-            setSiteId(id);
-            setSensor(null);
+            setSiteId((prev) => {
+              if (prev !== id) setSensor(null);
+              return id;
+            });
           }}
         />
       )}

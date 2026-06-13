@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { MapContainer, TileLayer, CircleMarker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { UOH_NODES, CATEGORY_COLOUR } from "../data/uohNodes";
@@ -9,7 +9,6 @@ const ZOOM = 15;
 
 function Map() {
   const [activeCategory, setActiveCategory] = useState(null);
-  const navigate = useNavigate();
 
   const allCategories = [...new Set(UOH_NODES.flatMap((n) => n.categories))].sort();
 
@@ -106,25 +105,23 @@ function Map() {
                 ))}
               </div>
               {node.dbLink && (
-                <button
-                  onClick={() => navigate(
-                    `/dashboard?location_id=${node.dbLink.locationId}&site_id=${node.dbLink.siteId}`
-                  )}
+                <Link
+                  to={`/dashboard?location_id=${node.dbLink.locationId}&site_id=${node.dbLink.siteId}`}
                   style={{
+                    display: "block",
                     marginTop: 10,
-                    width: "100%",
                     padding: "6px 0",
                     background: "#0077ff",
                     color: "#fff",
-                    border: "none",
                     borderRadius: 5,
-                    cursor: "pointer",
                     fontSize: "0.82rem",
                     fontWeight: "bold",
+                    textAlign: "center",
+                    textDecoration: "none",
                   }}
                 >
                   View sensor data →
-                </button>
+                </Link>
               )}
             </Popup>
           </CircleMarker>
