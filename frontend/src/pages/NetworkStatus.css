@@ -1,0 +1,173 @@
+.ns-page {
+  padding: 24px;
+  max-width: 1100px;
+}
+
+.ns-subtitle {
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Summary pills */
+.ns-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.ns-pill {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.pill-online  { background: #e6f9ec; color: #1a7f3c; border: 1px solid #a8ddb8; }
+.pill-recent  { background: #fff8e1; color: #7a5800; border: 1px solid #ffe08a; }
+.pill-stale   { background: #fff3e0; color: #8c4600; border: 1px solid #ffcc80; }
+.pill-nodata  { background: #e8f0fe; color: #1a4fba; border: 1px solid #b0c8f8; }
+
+/* Table */
+.ns-table-wrap {
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.ns-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.ns-table thead th {
+  background: #f5f7fa;
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 600;
+  color: #444;
+  border-bottom: 2px solid #e0e0e0;
+  white-space: nowrap;
+}
+
+.ns-table tbody tr {
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.15s;
+}
+
+.ns-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.ns-table tbody tr:hover {
+  background: #f9fbff;
+}
+
+.ns-table td {
+  padding: 10px 14px;
+  vertical-align: middle;
+}
+
+/* Node name cell */
+.ns-name {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 160px;
+}
+
+.ns-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 8px;
+  flex-shrink: 0;
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+.ns-rawname {
+  font-size: 0.72rem;
+  color: #999;
+  margin-left: 18px;
+}
+
+/* Status badge */
+.ns-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 10px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.status-online  { background: #e6f9ec; color: #1a7f3c; }
+.status-recent  { background: #fff8e1; color: #7a5800; }
+.status-stale   { background: #fff3e0; color: #8c4600; }
+.status-nodata  { background: #f5f5f5; color: #888; }
+.status-wl      { background: #e8f0fe; color: #1a4fba; }
+
+/* Date cell */
+.ns-date {
+  white-space: nowrap;
+  font-size: 0.85rem;
+}
+
+.ns-rel {
+  display: block;
+  font-size: 0.75rem;
+  color: #999;
+}
+
+/* Sensor count */
+.ns-count {
+  text-align: center;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Category chips */
+.ns-cats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.ns-cat {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 8px;
+  font-size: 0.72rem;
+  color: #fff;
+  white-space: nowrap;
+}
+
+/* Dashboard link */
+.ns-link {
+  display: inline-block;
+  padding: 4px 10px;
+  background: #0077ff;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.ns-link:hover {
+  background: #0062d6;
+}
+
+.ns-loading {
+  color: #888;
+  font-style: italic;
+}
+
+.ns-error {
+  color: #c00;
+}

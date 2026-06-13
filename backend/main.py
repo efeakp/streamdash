@@ -119,6 +119,42 @@ def get_sensors(site_id: int):
 # ----------------------
 # MEASUREMENTS
 # ----------------------
+# ----------------------
+# NETWORK STATUS
+# ----------------------
+@app.get("/network-status")
+def get_network_status():
+    conn = db.get_connection()
+    cursor = conn.cursor()
+    cursor.execute("""
+        SELECT si.site_id, si.site_code, l.location_id, l.name,
+               COUNT(DISTINCT s.sensor_id),
+               MAX(m.timestamp)
+        FROM sites si
+        JOIN locations l ON si.location_id = l.location_id
+        LEFT JOIN sensors s ON s.site_id = si.site_id
+        LEFT JOIN measurements m ON m.sensor_id = s.sensor_id AND m.value IS NOT NULL
+        GROUP BY si.site_id, si.site_code, l.location_id, l.name
+        ORDER BY l.name, si.site_code
+    """)
+    results = [
+        {
+            "site_id": row[0],
+            "site_code": row[1],
+            "location_id": row[2],
+            "location_name": row[3],
+            "sensor_count": row[4],
+            "last_seen": str(row[5]) if row[5] else None,
+        }
+        for row in cursor.fetchall()
+    ]
+    cursor.close()
+    conn.close()
+    return results
+
+# ----------------------
+# MEASUREMENTS
+# ----------------------
 @app.get("/measurements")
 def get_measurements(
     sensor_id: int,

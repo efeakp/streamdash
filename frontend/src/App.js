@@ -4,6 +4,7 @@ import About from "./pages/About";
 import Gallery from "./pages/Gallery";
 import Home from "./pages/Home";
 import Map from "./pages/Map";
+import NetworkStatus from "./pages/NetworkStatus";
 import Parameters from "./data/Parameters";
 import logo from "./assets/logo.jpg"; // place your logo in src/assets/
 
@@ -81,6 +82,9 @@ function App() {
             <NavLink to="/map" style={navLinkStyle} onClick={() => setMenuOpen(false)}>
               Map
             </NavLink>
+            <NavLink to="/network" style={navLinkStyle} onClick={() => setMenuOpen(false)}>
+              Network
+            </NavLink>
             <NavLink to="/gallery" style={navLinkStyle} onClick={() => setMenuOpen(false)}>
               Gallery
             </NavLink>
@@ -94,6 +98,7 @@ function App() {
             <Route path="/dashboard" element={<Home />} />
             <Route path="/parameters" element={<Parameters />} />
             <Route path="/map" element={<Map />} />
+            <Route path="/network" element={<NetworkStatus />} />
             <Route path="/gallery" element={<Gallery />} />
           </Routes>
         </main>
