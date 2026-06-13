@@ -1,105 +1,188 @@
-/* About.css */
-
-/* Reset / base styles (optional) */
-.aboutPage {
-  max-width: 800px;
+.about-page {
+  max-width: 900px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0 20px 40px;
   font-family: Arial, sans-serif;
-  line-height: 1.6;
   color: #333;
 }
 
-.aboutHero {
+/* Hero */
+.about-hero {
   text-align: center;
-  margin-bottom: 2rem;
+  padding: 48px 20px 40px;
 }
 
-.aboutHero h1 {
-  font-size: 2.5rem;
-  color: #005a87;
-  margin-bottom: 0.5rem;
+.about-hero h1 {
+  font-size: 2.2rem;
+  color: #0055cc;
+  margin: 0 0 16px;
 }
 
-.aboutHero .tagline {
-  font-size: 1.2rem;
-  color: #007bb5;
-  margin-bottom: 1rem;
+.about-hero-sub {
+  font-size: 1.1rem;
+  color: #555;
+  max-width: 620px;
+  margin: 0 auto 28px;
+  line-height: 1.6;
 }
 
-.aboutMission,
-.aboutStory,
-.aboutWhat,
-.aboutImpact,
-.aboutPartners,
-.aboutVision,
-.aboutCTA,
-.aboutContact {
-  margin-bottom: 2rem;
+.about-hero-cta {
+  display: inline-block;
+  background: #0077ff;
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 28px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background 0.2s;
 }
 
-.aboutMission h2,
-.aboutStory h2,
-.aboutWhat h2,
-.aboutImpact h2,
-.aboutPartners h2,
-.aboutVision h2,
-.aboutCTA h2,
-.aboutContact h2 {
-  font-size: 1.8rem;
-  color: #005a87;
-  margin-bottom: 0.75rem;
-  border-bottom: 2px solid #e0e0e0;
-  padding-bottom: 0.5rem;
+.about-hero-cta:hover {
+  background: #0055cc;
 }
 
-.aboutMission ul,
-.aboutWhat ul,
-.aboutVision ul,
-.aboutImpact ul {
-  list-style-type: disc;
-  padding-left: 1.5rem;
+/* Stats bar */
+.about-stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  background: #f0f6ff;
+  border-radius: 10px;
+  padding: 24px 20px;
+  margin-bottom: 36px;
 }
 
-.aboutImpact h3 {
-  font-size: 1.4rem;
-  color: #007bb5;
-  margin-top: 1.2rem;
+.about-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 100px;
 }
 
-.aboutCTA ul {
-  list-style-type: none;
-  padding: 0;
+.about-stat-number {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #0077ff;
 }
 
-.aboutCTA li {
-  margin-bottom: 0.5rem;
+.about-stat-label {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 4px;
 }
 
-.aboutCTA strong {
-  color: #005a87;
+/* Feature cards */
+.about-cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
 }
 
-.aboutContact a {
-  color: #007bb5;
+.about-card {
+  flex: 1 1 220px;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 24px 20px;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.about-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 119, 255, 0.12);
+  border-color: #0077ff;
+}
+
+.about-card-icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.about-card-title {
+  font-size: 1.1rem;
+  color: #0055cc;
+  margin: 0 0 8px;
+}
+
+.about-card-desc {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* About body text */
+.about-body {
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 36px;
+}
+
+.about-body p {
+  margin-bottom: 14px;
+}
+
+/* Footer section */
+.about-footer-section {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.about-links h3 {
+  font-size: 1rem;
+  color: #333;
+  margin: 0 0 10px;
+}
+
+.about-links p {
+  margin: 6px 0;
+}
+
+.about-links a {
+  color: #0077ff;
   text-decoration: none;
 }
 
-.aboutContact a:hover {
+.about-links a:hover {
   text-decoration: underline;
+}
+
+.about-badge {
+  width: 160px;
+  height: auto;
 }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .aboutPage {
-    padding: 1rem;
+  .about-hero h1 {
+    font-size: 1.6rem;
   }
 
-  .aboutHero h1 {
-    font-size: 2rem;
-  }
-
-  .aboutHero .tagline {
+  .about-hero-sub {
     font-size: 1rem;
+  }
+
+  .about-stat-number {
+    font-size: 1.6rem;
+  }
+
+  .about-cards {
+    flex-direction: column;
+  }
+
+  .about-footer-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 }

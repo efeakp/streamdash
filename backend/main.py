@@ -19,6 +19,23 @@ def read_root():
     return {"message": "SUDS backend is running 🚀"}
 
 # ----------------------
+# STATS
+# ----------------------
+@app.get("/stats")
+def get_stats():
+    conn = db.get_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT COUNT(*) FROM locations")
+    locations = cursor.fetchone()[0]
+    cursor.execute("SELECT COUNT(*) FROM sensors")
+    sensors = cursor.fetchone()[0]
+    cursor.execute("SELECT COUNT(*) FROM measurements WHERE value IS NOT NULL")
+    measurements = cursor.fetchone()[0]
+    cursor.close()
+    conn.close()
+    return {"locations": locations, "sensors": sensors, "measurements": measurements}
+
+# ----------------------
 # LOCATIONS
 # ----------------------
 @app.get("/locations")
