@@ -18,11 +18,13 @@ function windDegToCompass(deg) {
   return dirs[Math.round(deg / 45) % 8];
 }
 
-function formatAge(ms) {
+function formatTimestamp(ms) {
+  const d = new Date(ms);
+  const date = d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+  const time = d.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
   const mins = Math.round((Date.now() - ms) / 60000);
-  if (mins < 1) return "just now";
-  if (mins === 1) return "1 min ago";
-  return `${mins} mins ago`;
+  const age = mins < 1 ? "just now" : mins === 1 ? "1 min ago" : `${mins} mins ago`;
+  return `${date}, ${time} (${age})`;
 }
 
 function LiveWeather() {
@@ -38,7 +40,7 @@ function LiveWeather() {
       .then((d) => {
         if (d.error) { setError(d.error); return; }
         setData(d);
-        setAge(formatAge(d.lastReceived));
+        setAge(formatTimestamp(d.lastReceived));
       })
       .catch(() => setError("Could not load live conditions."))
       .finally(() => setLoading(false));
@@ -47,7 +49,7 @@ function LiveWeather() {
   // Keep the "X mins ago" label ticking
   useEffect(() => {
     if (!data) return;
-    const id = setInterval(() => setAge(formatAge(data.lastReceived)), 30000);
+    const id = setInterval(() => setAge(formatTimestamp(data.lastReceived)), 30000);
     return () => clearInterval(id);
   }, [data]);
 
