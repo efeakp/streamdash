@@ -70,7 +70,7 @@ function App() {
             className="nav-links"
           >
             <NavLink to="/" end style={navLinkStyle} onClick={() => setMenuOpen(false)}>
-              About
+              Home
             </NavLink>
             <NavLink to="/dashboard" style={navLinkStyle} onClick={() => setMenuOpen(false)}>
               Dashboard
