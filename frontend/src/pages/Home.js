@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import LocationSelector from "../components/LocationSelector";
 import SiteSelector from "../components/SiteSelector";
 import SensorSelector from "../components/SensorSelector";
@@ -6,11 +7,15 @@ import MeasurementChart from "../components/MeasurementChart";
 import LiveWeather from "../components/LiveWeather";
 
 function Home() {
-  const [locationId, setLocationId] = useState(null);
-  const [siteId, setSiteId] = useState(null);
-  const [sensor, setSensor] = useState(null);
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const [searchParams] = useSearchParams();
+  const defaultLocationId = searchParams.get("location_id") ? Number(searchParams.get("location_id")) : null;
+  const defaultSiteId     = searchParams.get("site_id")     ? Number(searchParams.get("site_id"))     : null;
+
+  const [locationId, setLocationId] = useState(defaultLocationId);
+  const [siteId, setSiteId]         = useState(defaultSiteId);
+  const [sensor, setSensor]         = useState(null);
+  const [startDate, setStartDate]   = useState("");
+  const [endDate, setEndDate]       = useState("");
 
   return (
     <div>
@@ -21,6 +26,7 @@ function Home() {
 
       <h3 style={{ marginTop: 28, marginBottom: 8 }}>Sensor Data</h3>
       <LocationSelector
+        defaultId={defaultLocationId}
         onSelect={(id) => {
           setLocationId(id);
           setSiteId(null);
@@ -30,6 +36,7 @@ function Home() {
       {locationId && (
         <SiteSelector
           locationId={locationId}
+          defaultId={defaultSiteId}
           onSelect={(id) => {
             setSiteId(id);
             setSensor(null);

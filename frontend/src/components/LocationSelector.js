@@ -2,17 +2,24 @@ import React, { useEffect, useState } from "react";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
-function LocationSelector({ onSelect }) {
+function LocationSelector({ onSelect, defaultId }) {
   const [locations, setLocations] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [value, setValue] = useState(defaultId ? String(defaultId) : "");
 
   useEffect(() => {
     setLoading(true);
     setError(null);
     fetch(`${API_URL}/locations`)
       .then((res) => res.json())
-      .then((data) => setLocations(Array.isArray(data) ? data : []))
+      .then((data) => {
+        const locs = Array.isArray(data) ? data : [];
+        setLocations(locs);
+        if (defaultId && locs.find((l) => l.location_id === defaultId)) {
+          onSelect(defaultId);
+        }
+      })
       .catch(() => setError("Failed to load locations."))
       .finally(() => setLoading(false));
   }, []);
@@ -24,8 +31,10 @@ function LocationSelector({ onSelect }) {
       {error && <span style={{ color: "red" }}>{error}</span>}
       {!loading && !error && (
         <select
+          value={value}
           onChange={(e) => {
             const val = e.target.value;
+            setValue(val);
             onSelect(val ? Number(val) : null);
           }}
         >
