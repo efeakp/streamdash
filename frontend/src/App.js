@@ -71,7 +71,7 @@ function App() {
             <NavLink to="/" end style={navLinkStyle} onClick={() => setMenuOpen(false)}>
               About
             </NavLink>
-            <NavLink to="/about" style={navLinkStyle} onClick={() => setMenuOpen(false)}>
+            <NavLink to="/dashboard" style={navLinkStyle} onClick={() => setMenuOpen(false)}>
               Dashboard
             </NavLink>
             <NavLink to="/parameters" style={navLinkStyle} onClick={() => setMenuOpen(false)}>
@@ -87,7 +87,7 @@ function App() {
         <main style={{ flex: 1, padding: 20 }}>
           <Routes>
             <Route path="/" element={<About />} />
-            <Route path="/about" element={<Home />} />
+            <Route path="/dashboard" element={<Home />} />
             <Route path="/parameters" element={<Parameters />} />
             <Route path="/gallery" element={<Gallery />} /> {/* 👈 new route */}
           </Routes>
