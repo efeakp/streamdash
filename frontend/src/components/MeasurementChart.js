@@ -27,7 +27,8 @@ function MeasurementChart({ sensorId, sensorName, unit, startDate, endDate }) {
         .then((res) => res.json())
         .then((data) => {
           const results = Array.isArray(data.results) ? data.results : [];
-          setData(results);
+          const filtered = results.filter((r) => r.value !== null && r.value !== undefined);
+          setData(filtered);
           setCount(data.count ?? results.length);
         })
         .catch((err) => {
@@ -45,9 +46,12 @@ function MeasurementChart({ sensorId, sensorName, unit, startDate, endDate }) {
       <h3>{sensorName || "Measurements"}{unit ? ` (${unit})` : ""}</h3>
 
       {loading && <p>Loading measurements...</p>}
-      {!loading && data.length === 0 && <p>No data available for this sensor.</p>}
-      {!loading && count !== null && data.length > 0 && (
-        <p style={{ fontSize: "0.85rem", color: "#666" }}>{count} data points</p>
+      {!loading && count === 0 && <p>No data available for this sensor.</p>}
+      {!loading && count > 0 && data.length === 0 && (
+        <p>No recorded values for this sensor yet ({count} rows, all null).</p>
+      )}
+      {!loading && data.length > 0 && (
+        <p style={{ fontSize: "0.85rem", color: "#666" }}>{data.length} data points</p>
       )}
 
       {data.length > 0 && (
