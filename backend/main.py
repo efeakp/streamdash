@@ -88,10 +88,10 @@ def get_measurements(
         query += " AND timestamp <= ?"
         params.append(end_date)
 
-    query += " ORDER BY timestamp ASC"   # ASC for proper time-series order
+    query += " ORDER BY timestamp ASC"
 
     cursor.execute(query, tuple(params))
     results = [{"timestamp": str(row[0]), "value": row[1]} for row in cursor.fetchall()]
     cursor.close()
     conn.close()
-    return results
+    return {"count": len(results), "results": results}

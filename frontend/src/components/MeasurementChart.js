@@ -13,6 +13,7 @@ const API_URL = process.env.REACT_APP_API_URL;
 
 function MeasurementChart({ sensorId, sensorName, unit, startDate, endDate }) {
   const [data, setData] = useState([]);
+  const [count, setCount] = useState(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -25,7 +26,9 @@ function MeasurementChart({ sensorId, sensorName, unit, startDate, endDate }) {
       fetch(url)
         .then((res) => res.json())
         .then((data) => {
-          setData(Array.isArray(data) ? data : []);
+          const results = Array.isArray(data.results) ? data.results : [];
+          setData(results);
+          setCount(data.count ?? results.length);
         })
         .catch((err) => {
           console.error("Error fetching measurements:", err);
@@ -43,6 +46,9 @@ function MeasurementChart({ sensorId, sensorName, unit, startDate, endDate }) {
 
       {loading && <p>Loading measurements...</p>}
       {!loading && data.length === 0 && <p>No data available for this sensor.</p>}
+      {!loading && count !== null && data.length > 0 && (
+        <p style={{ fontSize: "0.85rem", color: "#666" }}>{count} data points</p>
+      )}
 
       {data.length > 0 && (
         <ResponsiveContainer width="100%" height={300}>
