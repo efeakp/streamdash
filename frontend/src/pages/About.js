@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import uppBadge from "../assets/upp_badge.png";
+import LiveWeather from "../components/LiveWeather";
 import "../About.css";
 
 const API_URL = process.env.REACT_APP_API_URL;
@@ -85,6 +86,12 @@ const About = () => {
             <p className="about-card-desc">{f.description}</p>
           </Link>
         ))}
+      </section>
+
+      {/* Live conditions */}
+      <section className="about-live">
+        <h2>Live Conditions</h2>
+        <LiveWeather />
       </section>
 
       {/* Map */}

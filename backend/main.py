@@ -2,6 +2,7 @@ from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional
 import db
+import requests as http
 
 app = FastAPI()
 
@@ -17,6 +18,38 @@ app.add_middleware(
 @app.get("/")
 def read_root():
     return {"message": "SUDS backend is running 🚀"}
+
+# ----------------------
+# LIVE CONDITIONS
+# ----------------------
+WEATHERLINK_URL = "https://www.weatherlink.com/embeddablePage/summaryData/a87ff1bc9e5c4ccc9228ea71e02a7b4b"
+
+LIVE_FIELDS = {
+    "Temp", "Hum", "Wind Speed", "Wind Direction", "Dew Point",
+    "Barometer", "Bar Trend", "Solar Rad", "UV Index", "Rain Rate",
+    "Rain Storm",
+}
+
+@app.get("/live")
+def get_live():
+    try:
+        resp = http.get(WEATHERLINK_URL, timeout=10)
+        resp.raise_for_status()
+        data = resp.json()
+        readings = {
+            r["sensorDataName"]: {
+                "value": r["convertedValue"],
+                "unit": r["unitLabel"],
+            }
+            for r in data.get("currConditionValues", [])
+            if r["sensorDataName"] in LIVE_FIELDS
+        }
+        return {
+            "lastReceived": data.get("lastReceived"),
+            "readings": readings,
+        }
+    except Exception as e:
+        return {"error": str(e)}
 
 # ----------------------
 # STATS
