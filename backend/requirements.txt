@@ -2,3 +2,7 @@ fastapi
 uvicorn
 mariadb
 requests
+scikit-learn
+pandas
+joblib
+python-dotenv

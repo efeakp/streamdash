@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
 import About from "./pages/About";
+import DigitalTwin from "./pages/DigitalTwin";
 import Gallery from "./pages/Gallery";
 import Home from "./pages/Home";
 import Map from "./pages/Map";
@@ -85,6 +86,9 @@ function App() {
             <NavLink to="/network" style={navLinkStyle} onClick={() => setMenuOpen(false)}>
               Network
             </NavLink>
+            <NavLink to="/twin" style={navLinkStyle} onClick={() => setMenuOpen(false)}>
+              Digital Twin
+            </NavLink>
             <NavLink to="/gallery" style={navLinkStyle} onClick={() => setMenuOpen(false)}>
               Gallery
             </NavLink>
@@ -99,6 +103,7 @@ function App() {
             <Route path="/parameters" element={<Parameters />} />
             <Route path="/map" element={<Map />} />
             <Route path="/network" element={<NetworkStatus />} />
+            <Route path="/twin" element={<DigitalTwin />} />
             <Route path="/gallery" element={<Gallery />} />
           </Routes>
         </main>
