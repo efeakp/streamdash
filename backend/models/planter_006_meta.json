@@ -1,0 +1,66 @@
+{
+  "node_name": "Planter 006",
+  "site_id": 5,
+  "feature_names": [
+    "Rain_1h",
+    "Rain_6h",
+    "Rain_24h",
+    "hour_sin",
+    "hour_cos",
+    "doy_sin",
+    "doy_cos",
+    "SoilMoisture_10cm",
+    "SoilMoisture_20cm",
+    "SoilMoisture_30cm",
+    "SoilMoisture_40cm",
+    "SoilMoisture_50cm",
+    "SoilMoisture_60cm"
+  ],
+  "feature_importance": {
+    "Rain_1h": 0.00022045743264943057,
+    "Rain_6h": 0.0001416129124451313,
+    "Rain_24h": 0.00014607400814478503,
+    "hour_sin": 0.0001854127684710194,
+    "hour_cos": 0.0003737031683056845,
+    "doy_sin": 0.0003611257045221287,
+    "doy_cos": 0.0002828209166168707,
+    "SoilMoisture_10cm": 0.16689396238472853,
+    "SoilMoisture_20cm": 0.1658284842650984,
+    "SoilMoisture_30cm": 0.16580311493844488,
+    "SoilMoisture_40cm": 0.1664810380332609,
+    "SoilMoisture_50cm": 0.16697077708709676,
+    "SoilMoisture_60cm": 0.1663114163802154
+  },
+  "metrics": {
+    "SoilMoisture_10cm": {
+      "mae": 0.3283,
+      "r2": 0.9305,
+      "n_samples": 117989
+    },
+    "SoilMoisture_20cm": {
+      "mae": 0.1755,
+      "r2": 0.8742,
+      "n_samples": 117989
+    },
+    "SoilMoisture_30cm": {
+      "mae": 0.2104,
+      "r2": 0.8696,
+      "n_samples": 117989
+    },
+    "SoilMoisture_40cm": {
+      "mae": 0.1004,
+      "r2": 0.9822,
+      "n_samples": 117989
+    },
+    "SoilMoisture_50cm": {
+      "mae": 0.0399,
+      "r2": 0.9939,
+      "n_samples": 117989
+    },
+    "SoilMoisture_60cm": {
+      "mae": 0.0811,
+      "r2": 0.9776,
+      "n_samples": 117989
+    }
+  }
+}
