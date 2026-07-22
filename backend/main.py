@@ -9,7 +9,12 @@ import joblib
 import db
 import requests as http
 
-app = FastAPI(root_path=os.getenv("ROOT_PATH", ""))
+app = FastAPI(
+    title="StreamDash API",
+    description="Real-time environmental sensor data and digital-twin predictions for the SuDS monitoring network at the University of Hull.",
+    version="1.0.0",
+    root_path=os.getenv("ROOT_PATH", ""),
+)
 
 # Enable CORS so frontend (localhost:3000) can access backend (localhost:8001)
 app.add_middleware(
