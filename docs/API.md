@@ -17,7 +17,13 @@ None. All endpoints are public, read-only, and unauthenticated.
 
 ## Interactive docs
 
-FastAPI also auto-generates interactive Swagger UI and ReDoc pages at `/docs` and `/redoc` on whichever base URL above applies — e.g. **[streamdash.org/api/docs](https://streamdash.org/api/docs)** in production. The backend's `ROOT_PATH` env var (set in the systemd unit, not `.env`) keeps these correctly prefixed behind the nginx `/api/` proxy, including "Try it out" requests.
+FastAPI also auto-generates interactive Swagger UI and ReDoc pages at `/docs` and `/redoc` on whichever base URL above applies — e.g. **[streamdash.org/api/docs](https://streamdash.org/api/docs)** and **[streamdash.org/api/redoc](https://streamdash.org/api/redoc)** in production. The backend's `ROOT_PATH` env var (set in the systemd unit, not `.env`) keeps these correctly prefixed behind the nginx `/api/` proxy, including "Try it out" requests.
+
+There's also a **[standalone static Redoc page](redoc.html)** (`docs/redoc.html`) — the schema is baked in at build time, so it renders without needing the live backend or `streamdash.org` to be reachable. Regenerate it after changing any endpoint:
+```bash
+curl https://streamdash.org/api/openapi.json -o docs/openapi.json
+npx --yes @redocly/cli build-docs docs/openapi.json --output docs/redoc.html --title "StreamDash API Documentation"
+```
 
 ---
 

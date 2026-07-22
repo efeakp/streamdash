@@ -91,7 +91,7 @@ suds-lab/
 
 ## API Endpoints
 
-All endpoints are proxied through nginx at `/api/*` → `localhost:8001/*`. See [`docs/API.md`](docs/API.md) for full parameter details, response shapes, and examples.
+All endpoints are proxied through nginx at `/api/*` → `localhost:8001/*`. See [`docs/API.md`](docs/API.md) for full parameter details, response shapes, and examples, or the rendered reference at [`docs/redoc.html`](docs/redoc.html) / [streamdash.org/api/redoc](https://streamdash.org/api/redoc).
 
 | Method | Endpoint | Description |
 |---|---|---|
