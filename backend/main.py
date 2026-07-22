@@ -9,7 +9,7 @@ import joblib
 import db
 import requests as http
 
-app = FastAPI()
+app = FastAPI(root_path=os.getenv("ROOT_PATH", ""))
 
 # Enable CORS so frontend (localhost:3000) can access backend (localhost:8001)
 app.add_middleware(
