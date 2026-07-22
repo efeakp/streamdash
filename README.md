@@ -91,7 +91,7 @@ suds-lab/
 
 ## API Endpoints
 
-All endpoints are proxied through nginx at `/api/*` → `localhost:8001/*`.
+All endpoints are proxied through nginx at `/api/*` → `localhost:8001/*`. See [`docs/API.md`](docs/API.md) for full parameter details, response shapes, and examples.
 
 | Method | Endpoint | Description |
 |---|---|---|
@@ -110,7 +110,7 @@ All endpoints are proxied through nginx at `/api/*` → `localhost:8001/*`.
 
 ## Digital Twin — ML Surrogate Model
 
-The Digital Twin page uses Random Forest models trained on historical sensor data to simulate how soil moisture responds to different weather scenarios.
+The Digital Twin page uses Random Forest models trained on historical sensor data to simulate how soil moisture responds to different weather scenarios. See [`docs/digital_twin.md`](docs/digital_twin.md) for the full technical write-up.
 
 **Nodes:** Planter 006 and Planter 007A (the two best-instrumented nodes with co-located rain, temp/humidity, flow, and soil moisture sensors at 6 depths).
 
