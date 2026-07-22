@@ -17,7 +17,7 @@ None. All endpoints are public, read-only, and unauthenticated.
 
 ## Interactive docs
 
-FastAPI also auto-generates interactive Swagger UI and ReDoc pages at `/docs` and `/redoc` on whichever base URL above applies.
+FastAPI also auto-generates interactive Swagger UI and ReDoc pages at `/docs` and `/redoc` on whichever base URL above applies — e.g. **[streamdash.org/api/docs](https://streamdash.org/api/docs)** in production. The backend's `ROOT_PATH` env var (set in the systemd unit, not `.env`) keeps these correctly prefixed behind the nginx `/api/` proxy, including "Try it out" requests.
 
 ---
 
