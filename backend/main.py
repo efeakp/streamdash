@@ -1,5 +1,6 @@
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 from typing import Optional
 import time
 import json
@@ -206,6 +207,61 @@ def get_measurements(
     cursor.close()
     conn.close()
     return {"count": len(results), "results": results}
+
+# ----------------------
+# FEEDBACK
+# ----------------------
+class FeedbackPayload(BaseModel):
+    name:    Optional[str] = None
+    email:   Optional[str] = None
+    rating:  Optional[int] = None
+    message: str
+    page:    Optional[str] = None
+
+@app.post("/feedback")
+def submit_feedback(payload: FeedbackPayload):
+    # Store in DB
+    conn = db.get_connection()
+    cursor = conn.cursor()
+    cursor.execute(
+        "INSERT INTO feedback (name, email, rating, message, page) VALUES (?, ?, ?, ?, ?)",
+        (payload.name, payload.email, payload.rating, payload.message, payload.page)
+    )
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    # Send email via Resend
+    api_key = os.environ.get("RESEND_API_KEY")
+    to_addr = os.environ.get("FEEDBACK_TO", "efe.akpovwovwo@nordic.energy")
+    if api_key:
+        stars = "★" * (payload.rating or 0) + "☆" * (5 - (payload.rating or 0))
+        html = f"""
+        <h2>New StreamDash Feedback</h2>
+        <table style="border-collapse:collapse;font-family:sans-serif;font-size:14px">
+          <tr><td style="padding:6px 12px;color:#666">Page</td><td style="padding:6px 12px"><strong>{payload.page or '—'}</strong></td></tr>
+          <tr><td style="padding:6px 12px;color:#666">Rating</td><td style="padding:6px 12px"><strong style="color:#f59e0b">{stars}</strong> ({payload.rating or '—'}/5)</td></tr>
+          <tr><td style="padding:6px 12px;color:#666">Name</td><td style="padding:6px 12px">{payload.name or '—'}</td></tr>
+          <tr><td style="padding:6px 12px;color:#666">Email</td><td style="padding:6px 12px">{payload.email or '—'}</td></tr>
+          <tr><td style="padding:6px 12px;color:#666;vertical-align:top">Message</td><td style="padding:6px 12px">{payload.message}</td></tr>
+        </table>
+        """
+        try:
+            http.post(
+                "https://api.resend.com/emails",
+                headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
+                json={
+                    "from": "StreamDash <onboarding@resend.dev>",
+                    "to": [to_addr],
+                    "subject": f"StreamDash feedback{f' ({payload.rating}/5 ★)' if payload.rating else ''}",
+                    "html": html,
+                },
+                timeout=8,
+            )
+        except Exception:
+            pass  # Don't fail the request if email fails
+
+    return {"ok": True}
 
 # ----------------------
 # DIGITAL TWIN

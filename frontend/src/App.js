@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Map from "./pages/Map";
 import NetworkStatus from "./pages/NetworkStatus";
 import Parameters from "./data/Parameters";
+import FeedbackWidget from "./components/FeedbackWidget";
 import logo from "./assets/logo.jpg"; // place your logo in src/assets/
 
 function PageTracker() {
@@ -124,6 +125,8 @@ function App() {
           Student Sustainability Project funded by UPP Foundation
         </footer>
       </div>
+
+      <FeedbackWidget />
 
       {/* Responsive styles */}
       <style>{`
