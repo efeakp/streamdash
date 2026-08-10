@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, NavLink, useLocation } from "react-router-dom";
 import About from "./pages/About";
 import DigitalTwin from "./pages/DigitalTwin";
 import Gallery from "./pages/Gallery";
@@ -8,6 +8,16 @@ import Map from "./pages/Map";
 import NetworkStatus from "./pages/NetworkStatus";
 import Parameters from "./data/Parameters";
 import logo from "./assets/logo.jpg"; // place your logo in src/assets/
+
+function PageTracker() {
+  const location = useLocation();
+  useEffect(() => {
+    if (window.gtag) {
+      window.gtag("config", "G-RTHEVGETZ5", { page_path: location.pathname });
+    }
+  }, [location]);
+  return null;
+}
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -22,6 +32,7 @@ function App() {
 
   return (
     <Router>
+      <PageTracker />
       <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
         {/* Header */}
         <header
